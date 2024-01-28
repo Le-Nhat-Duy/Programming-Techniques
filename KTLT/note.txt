@@ -1,0 +1,89 @@
+LINEAR SEARCH
+AD:
+    It’s simple, easy to understand and implement
+    It doesn’t require the data in the array to be stored in any
+par@cular order
+
+DIS:
+    It’s inefficient
+
+
+
+BINARY SEARCH
+AD:
+    The binary search is much more efficient than the linear
+search
+    How to evaluate the efficiency of the binary search?
+
+DIS:
+    The input array must be sorted
+
+
+void remove(int arr[], int& numElems, int removeItem) {
+    if (numElems == 0) {
+            cout << "Array is empty. Cannot remove element.\n";
+        return;
+    }
+
+    int index = 0;
+    while (index < numElems && arr[index] != removeItem) {
+        index++;
+    }
+
+    if (index < numElems) {
+        for (int i = index; i < numElems - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        numElems--; // Reduce the number of elements by 1
+            cout << "Element " << removeItem << " removed.\n";
+    } else {
+            cout << "Element " << removeItem << " not found in the array.\n";
+    }
+}
+
+void removeAt(int arr[], int& numElems, int index) {
+    if (numElems == 0) {
+        cout << "Array is empty. Cannot remove element.\n";
+        return;
+    }
+
+    if (index < 0 || index >= numElems) {
+        cout << "Index is out of range. Cannot remove element.\n";
+        return;
+    }
+
+    for (int i = index; i < numElems - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+
+    numElems--;
+    cout << "Element at index " << index << " removed.\n";
+}
+
+
+void removeAll(int arr[], int& numElems, int removeItem) {
+    if (numElems == 0) {
+        cout << "Array is empty. Cannot remove element.\n";
+        return;
+    }
+
+    int i = 0;
+    int originalNumElems = numElems;
+
+    while (i < numElems) {
+        if (arr[i] == removeItem) {
+            for (int j = i; j < numElems - 1; j++) {
+                arr[j] = arr[j + 1];
+            }
+            numElems--;
+        } else {
+            i++;
+        }
+    }
+
+    if (numElems == originalNumElems) {
+        cout << "Element " << removeItem << " not found in the array.\n";
+    } else {
+        cout << "All occurrences of element " << removeItem << " removed.\n";
+    }
+}
